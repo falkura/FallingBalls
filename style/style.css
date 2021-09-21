@@ -1,21 +1,15 @@
 body {
     display: flex;
     justify-content: center;
-    /* position: relative; */
+
     margin: 0px;
     padding: 0px;
 }
 
 #start_button {
     position: absolute;
-    /* padding: 20px; */
-    /* position: absolute; */
-    /* margin: auto; */
-    /* top: 50%; */
-    /* left: 50%; */
+    
     height: 40px;
-    /* margin: 0 auto; */
-    position: absolute;
     left: 50%;
     top: 50%;
 }

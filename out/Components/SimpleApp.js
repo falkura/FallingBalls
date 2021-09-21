@@ -37,6 +37,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var PIXI = __importStar(require("pixi.js"));
 var SimpleApp = /** @class */ (function (_super) {
     __extends(SimpleApp, _super);
+    // Simple PIXI app with fixed size and background color
     function SimpleApp() {
         var _this = _super.call(this, {
             width: 1000,

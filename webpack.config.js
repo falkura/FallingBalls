@@ -3,7 +3,7 @@ require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: './src/app.ts',
+  entry: './src/index.ts',
   mode: 'development',
   devServer: {
     static: './',
@@ -39,4 +39,5 @@ module.exports = {
   resolve: {
     extensions: [ ".tsx", ".ts", ".js" ]
   },
+  devtool: "eval-cheap-source-map",
 };

@@ -37,11 +37,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var PIXI = __importStar(require("pixi.js"));
 var SimpleButton = /** @class */ (function (_super) {
     __extends(SimpleButton, _super);
+    // Simple PIXI button with the ability to choose a texture
     function SimpleButton(texturePath) {
         var _this = _super.call(this) || this;
         _this.sprite = PIXI.Sprite.from('../../resource/' + texturePath);
         _this.sprite.buttonMode = true;
         _this.sprite.interactive = true;
+        _this.addChild(_this.sprite);
         return _this;
     }
     return SimpleButton;

@@ -1,4 +1,5 @@
 "use strict";
+// Several useful function
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRandomColor = exports.getRandomNumber = void 0;
 function getRandomNumber(min, max) {

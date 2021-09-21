@@ -1,4 +1,19 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -21,25 +36,32 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var PIXI = __importStar(require("pixi.js"));
 var Utils = __importStar(require("../Utils/Utils"));
-var ColorBall = /** @class */ (function () {
+var ColorBall = /** @class */ (function (_super) {
+    __extends(ColorBall, _super);
+    // Creating ball components
     function ColorBall(app) {
-        this.app = app;
-        this.wTexture = createWhiteCircle();
-        this.whiteBall = new PIXI.Sprite(this.app.renderer.generateTexture(this.wTexture));
-        this.innerText = createText(this.whiteBall);
-        this.cTexture = createColorCircle();
-        this.colorBall = new PIXI.Sprite(this.app.renderer.generateTexture(this.cTexture));
-        // this.init();
+        var _this = _super.call(this) || this;
+        _this.app = app;
+        _this.wTexture = createWhiteCircle();
+        _this.whiteBall = new PIXI.Sprite(_this.app.renderer.generateTexture(_this.wTexture));
+        _this.innerText = createText(_this.whiteBall);
+        _this.cTexture = createColorCircle();
+        _this.colorBall = new PIXI.Sprite(_this.app.renderer.generateTexture(_this.cTexture));
+        _this.assembly();
+        return _this;
     }
-    ColorBall.prototype.init = function () {
+    // Ball assemply
+    ColorBall.prototype.assembly = function () {
         this.whiteBall.x = 30;
         this.whiteBall.y = 30;
         this.whiteBall.addChild(this.innerText);
         this.colorBall.addChild(this.whiteBall);
-        return this.colorBall;
+        this.addChild(this.colorBall);
+        return this;
     };
     return ColorBall;
-}());
+}(PIXI.Sprite));
+// Simple white circle
 function createWhiteCircle() {
     var graphics = new PIXI.Graphics();
     graphics.lineStyle(0);
@@ -48,6 +70,7 @@ function createWhiteCircle() {
     graphics.endFill();
     return graphics;
 }
+// Simple color circle
 function createColorCircle() {
     var graphics = new PIXI.Graphics();
     graphics.lineStyle(2, 0x555555);
@@ -56,6 +79,7 @@ function createColorCircle() {
     graphics.endFill();
     return graphics;
 }
+// Skewed text for white circle
 function createText(outterSprite) {
     var rn = Utils.getRandomNumber(-100, 100);
     var textField = new PIXI.Text(rn);
