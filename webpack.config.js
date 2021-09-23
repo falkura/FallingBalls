@@ -12,7 +12,7 @@ module.exports = {
     port: 8080,
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './build'),
     filename: 'bundle.js',
   },
   module: {

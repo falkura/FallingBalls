@@ -31,7 +31,6 @@ class Model {
         const newBall:ColorBall = new ColorBall(this.view.app);
         newBall.x = 400 + Utils.getRandomNumber(0, 100) + gap;
         newBall.y = -110;
-        console.log();
         this.ballsArray.push(newBall);
         this.view.add(newBall);
 
