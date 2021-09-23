@@ -1,15 +1,28 @@
 # FallingBalls 
 
-### What is it?
+## What is it?
 
     Simple TypeScript Project with PixiJS.
 
-### Project setup
+## How to build
 
-##### 1. Clone the repo
-    git clone https://github.com/falkura/FallingBalls.git
+* Install Git.
+* Clone this repo.
+* Instal all required modules:
+    `npm i @types/offscreencanvas css-loader html-webpack-plugin pixi.js style-loader ts-loader typescript webpack webpack-dev-server tslint webpack-cli`
+* Run `npm run build` in the root of the cloned repo. 
 
-##### 2. Open server at the root of the project
+> You can run the project without build, if you need. Follow next steps.
 
-##### 3. Open link in browser
-    *server address*/build/ 
+## How to run project
+
+* Install Git and clone the repo.
+* Start server in the root of the cloned repo.
+* Open browser at `*your server address*/build/`
+
+## How to debug project
+
+* Build project.
+* Run `npx tsc` in the root of the project.
+* Run `npm run start`
+* Open browser at `http://localhost:8080/`
