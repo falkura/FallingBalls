@@ -12,4 +12,4 @@
 ##### 2. Open server at the root of the project
 
 ##### 3. Open link in browser
-    *server address*/build/
+    *server address*/build/ 
