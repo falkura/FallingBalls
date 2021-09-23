@@ -10,10 +10,13 @@ class Model {
     private ballsArray:PIXI.Sprite[];
     private yVelocity:number;
     private bottomBorder:number;
-    private timer:any;
 
     private unique:number;
     private same:number;
+
+    private seconds:number;
+    private b:number;
+    private b_:number;
     
     constructor(view:View){
         this.view = view;
@@ -24,6 +27,10 @@ class Model {
 
         this.unique = 0;
         this.same = 0;
+
+        this.seconds = 0;
+        this.b = 0;
+        this.b_ = 0;
     }
 
     // Adding ball
@@ -38,18 +45,14 @@ class Model {
     }
 
     public startApp() {
-        this.timer = setInterval( () => {
-            this.addNewBall();                              // First line of balls
-            setTimeout( () => this.addNewBall(300), 500);   // Second line of balls
-        }, 1000);      
-
         this.view.app.ticker.start();
     }
 
     // Stop and clean app
 
     public stopApp() {
-        clearInterval(this.timer);
+        this.view.app.ticker.stop();
+        this.b = this.b_ = this.seconds = 0;
         this.ballsArray.forEach((item:PIXI.Sprite) => {
             this.view.remove(item);
         });
@@ -66,7 +69,23 @@ class Model {
 
         // Ticker for remove balls that are behind the screen
 
-        this.view.app.ticker.add(()=> {
+        this.view.app.ticker.add((delta:number)=> {
+
+            // Code for working with time and summoning balls every 0.5 seconds
+
+            this.seconds += 1 / 60 * delta;
+            this.b_ = +this.seconds.toFixed(1);
+            if (this.b != this.b_ && this.b_ % .5 == 0) {
+                this.b = this.b_;
+                if (Math.ceil(this.b) == this.b) {
+                    this.addNewBall();      // First line of balls
+                } else {
+                    this.addNewBall(300);   // Second line of balls
+                }
+            }
+
+            // Ball mover and remover
+            
             this.ballsArray.forEach((item) => {
                 if (item.y > this.bottomBorder) {
                     this.view.remove(item);
